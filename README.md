@@ -24,17 +24,14 @@ Este proyecto es una aplicación móvil nativa que digitaliza la experiencia tra
 
 La aplicación sigue estrictamente el patrón **MVVM (Model-View-ViewModel)**, garantizando una separación clara de responsabilidades y un código mantenible.
 
-<details>
-<summary><b>📂 Detalles de la Estructura</b></summary>
-<br>
+<b>📂 Detalles de la Estructura</b>
+<br><br>
 
 | Componente | Clases Relacionadas | Responsabilidad |
 | :--- | :--- | :--- |
 | **Model** | `ModeloAhorcado.kt` | Es una `data class` que representa el estado inmutable del juego: palabra actual, intentos restantes, letras usadas, nombre del jugador y dificultad. |
 | **View** | `Inicio.kt`, `Juego.kt`, `MainActivity.kt` | Construidas con Jetpack Compose. Dibujan la UI de forma declarativa. `MainActivity` gestiona la navegación entre pantallas (`NavHost`). |
 | **ViewModel** | `ViewModelAhorcado.kt` | El núcleo lógico. Maneja el estado mediante `MutableStateFlow`, procesa los intentos del usuario, genera palabras aleatorias y actualiza la UI de forma segura. |
-
-</details>
 
 ---
 
