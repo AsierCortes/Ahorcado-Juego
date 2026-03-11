@@ -15,7 +15,7 @@ Este proyecto es una aplicación móvil nativa que digitaliza la experiencia tra
 </p>
 
 <p align="center">
-  <img width="300" alt="Estructura Carpetas" src="https://github.com/user-attachments/assets/de3fbe49-4b3d-4053-95ef-9fdc91659dd0" />
+  <img width="300" alt="Estructura Carpetas" src="https://github.com/user-attachments/assets/eda4e3f4-ee3b-4c31-88c5-39b2394af845" />
 </p>
 
 ---
@@ -51,12 +51,12 @@ Antes de empezar, el usuario debe identificarse y seleccionar un nivel de desaf�
       <b>Descripción:</b>
       <ul>
         <li>La pantalla inicial (`Inicio.kt`) solicita el nombre del jugador.</li>
-        <li>Validación activa: El botón de jugar se deshabilita si el campo está vacío.</li>
+        <li>Validación activa: El botón de jugar alerta si el campo está vacío.</li>
         <li>Dificultad seleccionable (Fácil/Difícil) que afecta directamente al número de intentos y complejidad de la palabra.</li>
       </ul>
     </td>
     <td width="50%" align="center">
-      <img width="250" alt="PantallaInicial" src="https://github.com/user-attachments/assets/d43067d9-4a0a-430a-9750-3c6a55d74f66" />
+      <img width="250" alt="PantallaInicial" src="https://github.com/user-attachments/assets/f49ced0c-09ec-465b-a62f-39b2a99d58b9" />
     </td>
   </tr>
 </table>
@@ -66,22 +66,28 @@ Una vez iniciada la partida, el ViewModel genera la palabra y el estado inicial.
 
 <table width="100%">
   <tr>
-    <td width="33%" align="center">
+    <td width="50%" align="center">
       <b>Inicio</b><br><br>
-      <img width="200" alt="PantallaAhorcado" src="https://github.com/user-attachments/assets/88109306-152d-4220-b030-4be93dcfd06f"/>
+      <img width="200" alt="PantallaAhorcado" src="https://github.com/user-attachments/assets/f49ced0c-09ec-465b-a62f-39b2a99d58b9" />
     </td>
-    <td width="33%" align="center">
+    <td width="50%" align="center">
       <b>Partida en Progreso</b><br><br>
-      <img width="200" alt="PantallaAhorcadoConPAlabras" src="https://github.com/user-attachments/assets/438a8f48-fb6b-4bc1-a59f-3f0b810e0fe6" />
-    </td>
-    <td width="33%" align="center">
-      <b>Gestión de Duplicados</b><br><br>
-      <img width="200" alt="palabrayautilizada" src="https://github.com/user-attachments/assets/67c24df7-e408-4ed3-9885-91aeff842732" />
+      <img width="200" alt="PantallaAhorcadoConPAlabras" src="https://github.com/user-attachments/assets/d3454c1f-df3d-4c18-86c6-67eeb07af84b" />
     </td>
   </tr>
   <tr>
-    <td colspan="3">
-      <p align="center"><i>El estado se actualiza en tiempo real: se destapan letras acertadas, se listan los fallos y se dibuja el ahorcado. El sistema detecta y notifica si intentas usar una letra ya probada.</i></p>
+    <td width="50%" align="center">
+      <b>Validación de Entrada</b><br><br>
+      <img width="200" alt="ValidacionEntrada" src="https://github.com/user-attachments/assets/e6385584-c296-4605-b0d8-ee2c5daa12f5" />
+    </td>
+    <td width="50%" align="center">
+      <b>Gestión de Duplicados</b><br><br>
+      <img width="200" alt="palabrayautilizada" src="https://github.com/user-attachments/assets/1aa474e4-2a3a-4718-b790-17b145f2d13b" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p align="center"><i>El estado se actualiza en tiempo real: se destapan letras acertadas y se listan los fallos. El sistema notifica mediante alertas visuales (Toasts) si la entrada está en blanco, es un número o si se intenta usar una letra repetida.</i></p>
     </td>
   </tr>
 </table>
@@ -94,12 +100,12 @@ El ViewModel detecta automáticamente el final de la partida y muestra un diálo
     <td width="50%" align="center">
       <b>Pantalla de Victoria</b><br>
       <i>(La palabra ha sido completada)</i><br><br>
-      <img width="250" alt="PalabraAdivinada" src="https://github.com/user-attachments/assets/d0be9c0d-d418-4b52-8b95-e9586ed31638" />
+      <img width="250" alt="PalabraAdivinada" src="https://github.com/user-attachments/assets/f0c979b3-3774-4ab1-a3ce-9d4740c9be14" />
     </td>
     <td width="50%" align="center">
       <b>Pantalla de Derrota</b><br>
       <i>(Se han agotado los intentos)</i><br><br>
-      <img width="250" alt="PantallaPerdido" src="https://github.com/user-attachments/assets/ca42f2d5-ae13-4878-93ce-07622ddf438d" />
+      <img width="250" alt="PantallaPerdido" src="https://github.com/user-attachments/assets/79483d94-59e0-4c9d-8e06-f236e56837cc" />
     </td>
   </tr>
 </table>
