@@ -11,9 +11,7 @@ import kotlinx.coroutines.flow.update
 class ViewModelAhorcado : ViewModel() {
     private val privateModelo = MutableStateFlow(ModeloAhorcado())
     val publicModelo = privateModelo.asStateFlow()
-
     var mapLetraYPos: MutableMap<Char, List<Int>> = mutableMapOf()
-
     // Palabra usuario es para comprobar que lleva el usuario
     var palabraUsuario: MutableList<Char> = mutableListOf()
     var letrasUtilizadas: MutableList<Char> = mutableListOf()
@@ -25,7 +23,6 @@ class ViewModelAhorcado : ViewModel() {
         3. Si estos dos son correctos actualizamos el model
         4. Cambiamos de pantalla
      */
-
     fun registrarse(nombre: String, nivel: String, context: Context): Boolean {
         var nombreCorrecto = false
         var nivelCorrecto = false
@@ -82,7 +79,6 @@ class ViewModelAhorcado : ViewModel() {
 
         // Recorremos la palabra random (List<Char>)
         for (letra in palabraRandom) {
-
             // Para que la List <Char> palabra usuario empiece como lo ve el usuario
             palabraUsuario.add('_')
 
@@ -99,11 +95,9 @@ class ViewModelAhorcado : ViewModel() {
                         posLetra.add(i)     // Guardamos la pos
                     }
                 }
-
                 // Guardamos en el map
                 mapLetraYPos.put(letraComprobar, posLetra)
             }
-
             // Rellenamos el strinbuilder _ _ _ _ _ _ _
             if (contador == palabraRandom.size - 1) {
                 palabraGuionesInterfaz.append('_')      // Si es la última no se le añade el espacio
@@ -111,10 +105,8 @@ class ViewModelAhorcado : ViewModel() {
                 palabraGuionesInterfaz.append('_')
                 palabraGuionesInterfaz.append(' ')
             }
-
             contador++;     // Par comprobar cuando es la ultima vuelta
         }
-
         // Actualizamos el modelo
         privateModelo.update {
             it.copy(
@@ -123,7 +115,6 @@ class ViewModelAhorcado : ViewModel() {
                 intentosRestantes = intentosRestantes
             )
         }
-
         println("")
         println("Dificultad seleccionada: " + getDificultad)
         println("Palabra: " + palabraRandom)
@@ -147,37 +138,27 @@ class ViewModelAhorcado : ViewModel() {
             Toast.makeText(context, "La ${letraStr.lowercase().first()} ya ha sido utilizada", Toast.LENGTH_SHORT).show()
         }
         else {
-
             // letraAComprobar
             val letra = letraStr.lowercase().first()
-
             // Nº intentos
             var intentosRestantes = privateModelo.value.intentosRestantes
-
             var adivinoPalabra = false
-
             // Letras utilizadas la añadimos
             letrasUtilizadas.add(letra)
-
             println("Letra a comprobar: $letra -> ${privateModelo.value.palabraCorrecta}")
             println("Map -> ${mapLetraYPos} ")
-
             // SI ha acertaod la letra, si la letra se encuentra dentro del map
             if (mapLetraYPos.containsKey(letra)) {
                 // Sacamos las posiciones donde se encuentra la letra
                 val posLetra = mapLetraYPos[letra]
-
                 println("La letra ${letra} se encuentra en los siguientes indices: ${mapLetraYPos}")
-
                 // Stringbuilder (_ _ _ _ _ _ _) el inicial
                 var palabraInterfaz = StringBuilder()
-
                 // Palabra usuario para ver que letras lleva adivinadas
                 for (posLetraCorrecta in posLetra!!) {
                     palabraUsuario[posLetraCorrecta] = letra
                     println(palabraUsuario)
                 }
-
                 // Modificamos el strinbuilder
                 for (i in 0 until palabraUsuario.size) {
                     // Si es la ultima no hace falta poner espacio de más
@@ -187,9 +168,7 @@ class ViewModelAhorcado : ViewModel() {
                         palabraInterfaz.append(palabraUsuario[i])
                         palabraInterfaz.append(" ")
                     }
-
                 }
-
                 // Si la palabra es exactamente igual que la palabra correcta, signfica que ya la ha adivinado
                 if (palabraUsuario.joinToString("")
                         .equals(privateModelo.value.palabraCorrecta, true)
@@ -200,7 +179,6 @@ class ViewModelAhorcado : ViewModel() {
                 // Ambos tienen que ser lo mismo
                 println("Palabra usuario -> $palabraUsuario")
                 println("Palabra interfaz -> $palabraInterfaz")
-
                 privateModelo.update {
                     it.copy(
                         palabraGuionesInterfaz = palabraInterfaz.toString(),
@@ -208,8 +186,7 @@ class ViewModelAhorcado : ViewModel() {
                         palabraAdivinada = adivinoPalabra
                     )
                 }
-
-                // Si no adivina la letra intentos --
+            // Si no adivina la letra intentos --
             } else {
                 intentosRestantes--
                 privateModelo.update {
@@ -218,20 +195,15 @@ class ViewModelAhorcado : ViewModel() {
                         letrasUtilizadas = letrasUtilizadas
                     )
                 }
-
             }
         }
     }
 
-
     // Reiniciar juego con el mismo nivel
     fun reiniciarJuego() {
-
-
         palabraUsuario.clear()
         mapLetraYPos.clear()
         letrasUtilizadas.clear()
-
         // Reiniciamos todoos los valores, con tan solo generarPalabra() ya se resetea
         // tanto palabraCorrecta, como palabraInterfazGuiones e intentos
         privateModelo.update {
@@ -240,7 +212,6 @@ class ViewModelAhorcado : ViewModel() {
                 letrasUtilizadas = emptyList<Char>()
             )
         }
-
         generarPalabraRandom()
     }
 }
